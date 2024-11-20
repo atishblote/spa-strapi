@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "marketings",
+  "info": {
+    "singularName": "marketing",
+    "pluralName": "marketings",
+    "displayName": "Marketing",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "active": {
+      "type": "boolean",
+      "default": false
+    },
+    "all_listings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::all-listing.all-listing",
+      "mappedBy": "marketing"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

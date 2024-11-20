@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "areas",
+  "info": {
+    "singularName": "area",
+    "pluralName": "areas",
+    "displayName": "Area",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "maxLength": 15
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "map_link": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "address": {
+      "type": "text",
+      "maxLength": 60
+    },
+    "all_listings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::all-listing.all-listing",
+      "inversedBy": "areas"
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "areas"
+    },
+    "location": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::location.location",
+      "inversedBy": "areas"
+    }
+  }
+}
